@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>afet-check-box-list Demo</title>
+    <style>
+        fieldset {
+            margin: 6px;
+            width: 40em;
+        }
+
+        div {
+            font-size: 10pt;
+            margin: 3px;
+        }
+
+        .a-cbx-list {
+            padding: 6px;
+            background-color: #ccc;
+        }
+
+            .a-cbx-list label {
+                margin-right: 12px;
+            }
+
+        .result {
+            font-size: 9pt;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body ng-controller="main">
+    <fieldset>
+        <legend>Object[] multiple</legend>
+        <div afet-cbx-list a-items="ObjItems" a-model="SelObjs" a-text-field="name"></div>
+        <div class="result">Selected Objects = {{SelObjs|json}}</div>
+    </fieldset>
+    <fieldset>
+        <legend>Object[] exclusive</legend>
+        <div afet-cbx-list a-items="ObjItems" a-model="SelObj" a-text-field="name" a-exclusive="true"></div>
+        <div class="result">Selected Object = {{SelObj|json}}</div>
+    </fieldset>
+    <fieldset>
+        <legend>string[] multiple</legend>
+        <div afet-cbx-list a-items="StrArray" a-model="SelStrings"></div>
+        <div class="result">Selected Strings = {{SelStrings|json}}</div>
+    </fieldset>
+    <fieldset>
+        <legend>string[] exclusive</legend>
+        <div afet-cbx-list a-items="StrArray" a-model="SelString" a-exclusive="true"></div>
+        <div>
+            <select ng-model="SelString" ng-options="s for s in StrArray"></select>
+        </div>
+        <div class="result">Selected String = {{SelString|json}}</div>
+
+    </fieldset>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="../Scripts/afetCbxList.js"></script>
+    <script>
+        angular.module("app", [])
+        .controller("main", function ($scope) {
+            $scope.Name = "Jeffrey"
+            $scope.ObjItems = [
+              { k: "A1", name: "Jeffrey" },
+              { k: "A2", name: "Darkthread" },
+              { k: "B1", name: "Hacker" }
+            ];
+            $scope.StrArray = ["Jeffrey", "Darkthread", "Hacker"];
+        })
+        .directive("afetCbxList", afet.directives.afetCbxList);
+    </script>
+</body>
+</html>
