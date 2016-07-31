@@ -62,3 +62,4 @@ var afet;
         directives.afetCbxList = afetCbxList;
     })(directives = afet.directives || (afet.directives = {}));
 })(afet || (afet = {}));
+//# sourceMappingURL=afetCbxList.js.map
